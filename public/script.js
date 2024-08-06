@@ -61,3 +61,34 @@ function addVideoStream(video, stream) {
 
     videoGrid.append(video);
 }
+console.log(ROOM_ID)
+
+// Mute/Unmute Audio
+document.getElementById('muteAudioButton').addEventListener('click', () => {
+    navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+            const audioTrack = stream.getAudioTracks()[0];
+            console.log(audioTrack.enabled)
+            audioTrack.enabled = !audioTrack.enabled;
+            console.log(audioTrack.enabled)
+
+            const muteButton = document.getElementById('muteAudioButton');
+            muteButton.textContent = audioTrack.enabled ? 'Mute Audio' : 'Unmute Audio';
+        })
+        .catch(error => {
+            console.error('Error accessing media devices:', error);
+        });
+});
+
+
+// Turn On/Off Video
+document.getElementById('toggleVideoButton').addEventListener('click', () => {
+    const videoTrack = myStream.getVideoTracks()[0];
+    if (videoTrack.enabled) {
+        videoTrack.enabled = false;
+        document.getElementById('toggleVideoButton').innerText = 'Turn On Video';
+    } else {
+        videoTrack.enabled = true;
+        document.getElementById('toggleVideoButton').innerText = 'Turn Off Video';
+    }
+});

@@ -20,6 +20,27 @@
             height: 100%;
             object-fit: cover;
         }
+        #controls {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        #controls button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #controls button:hover {
+            background-color: #0056b3;
+        }
     </style>
     <script src="/socket.io/socket.io.js" defer></script>
     <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
@@ -29,6 +50,11 @@
 <body>
 
     <div id="video-grid"></div>
+    <div id="controls">
+        <button id="endCallButton">End Call</button>
+        <button id="muteAudioButton">Mute Audio</button>
+        <button id="toggleVideoButton">Turn Off Video</button>
+    </div>
 </body>
 
 </html>
