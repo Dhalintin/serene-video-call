@@ -45,16 +45,54 @@
     <script src="/socket.io/socket.io.js" defer></script>
     <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
     <script src="script.js" defer></script>
-    
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-black">
+    <div class="flex justify-center md:h-screen">
+        <div class="relative top-12 call-chat">
+            <div class="w-[500px] mx-3 rounded-lg relative" id="callscreen">
+                <video id="userVideo" class="absolute w-full h-[550px] bg-white rounded-lg object-cover bg-white"></video>
+                <video id="myVideo" class="border-red-300 w-52 h-32 rounded-lg flex absolute top-[400px] left-72"></video>
 
-    <div id="video-grid"></div>
-    <div id="controls">
-        <button id="endCallButton">End Call</button>
-        <button id="muteAudioButton">Mute Audio</button>
-        <button id="toggleVideoButton">Turn Off Video</button>
+                <div class="relative w-5 h-5 bg-[#FFF963] rounded-full p-1 top-[500px] left-[470px]">
+                    <img src="../images/svgs/1.svg" alt="">
+                </div>
+            </div>
+            
+            <div class="relative min-w-24 max-w-44 top-[480px] left-5 bg-black bg-opacity-40 rounded-lg p-2 pb-2">
+                <p class="opacity-100 text-white text-sm font-semibold leading-tight" id="myVid">Dr. Ann tjtu yyyllybuy</p>
+            </div>
+            <div class="relative min-w-12 max-w-32 top-[430px] left-[300px] bg-black bg-opacity-40 rounded-lg">
+                <p class="opacity-100 text-white text-sm font-normal leading-tight p-2 pr-2" id="theirVid">Jellybean_Mango</p>
+            </div>
+        </div>
+
+        <div class="relative h-screen">
+            <div class="absolute overflow-y-auto top-12">
+                <div class="w-96 mb-4">
+                    <div class="w-96 bg-[#393939] rounded-lg pb-2 min-h-44">
+                        <div class="bg-[#272727] text-white rounded-t-lg p-1 text-md py-3 pl-4">Participant</div>
+                        <div id="participant"></div>
+                    </div>
+                </div>
+        
+                <div class="w-96">
+                    <div class="w-96 bg-[#393939] rounded-lg pb-4">
+                        <div class="bg-[#272727] text-white rounded-t-lg p-1 text-md py-3 pl-4">Chats</div>
+    
+                        <div id="chatSection" class="overflow-y-auto h-72 scroll-smooth my-scrollbar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="video-grid"></div> -->
+        <!-- <div id="controls">
+            <button id="endCallButton">End Call</button>
+            <button id="muteAudioButton">Mute Audio</button>
+            <button id="toggleVideoButton">Turn Off Video</button>
+        </div> -->
     </div>
+    
 </body>
 
 </html>

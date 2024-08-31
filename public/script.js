@@ -6,7 +6,8 @@ const myPeer = new Peer(undefined, {
     port: location.port || (location.protocol === 'https:' ? 443 : 80),
 });
 
-const myVideo = document.createElement('video');
+const myVideo = document.getElementById('myVideo');
+// const userVideo = document.getElementById('userVideo');
 myVideo.muted = true;
 
 const peers = {};
@@ -18,7 +19,7 @@ navigator.mediaDevices.getUserMedia({
 
     myPeer.on('call', call => {
         call.answer(stream);
-        const video = document.createElement('video');
+        const video = document.getElementById('userVideo');;
         call.on('stream', userVideoStream => {
             addVideoStream(video, userVideoStream);
         });
@@ -59,36 +60,34 @@ function addVideoStream(video, stream) {
         video.play();
     });
 
-    videoGrid.append(video);
+    // videoGrid.append(video);
 }
-console.log(ROOM_ID)
+// console.log(ROOM_ID)
 
 // Mute/Unmute Audio
-document.getElementById('muteAudioButton').addEventListener('click', () => {
-    navigator.mediaDevices.getUserMedia({ audio: true })
-        .then(stream => {
-            const audioTrack = stream.getAudioTracks()[0];
-            console.log(audioTrack.enabled)
-            audioTrack.enabled = !audioTrack.enabled;
-            console.log(audioTrack.enabled)
+// document.getElementById('muteAudioButton').addEventListener('click', () => {
+//     navigator.mediaDevices.getUserMedia({ audio: true })
+//         .then(stream => {
+//             const audioTrack = stream.getAudioTracks()[0];
+//             audioTrack.enabled = !audioTrack.enabled;
 
-            const muteButton = document.getElementById('muteAudioButton');
-            muteButton.textContent = audioTrack.enabled ? 'Mute Audio' : 'Unmute Audio';
-        })
-        .catch(error => {
-            console.error('Error accessing media devices:', error);
-        });
-});
+//             const muteButton = document.getElementById('muteAudioButton');
+//             muteButton.textContent = audioTrack.enabled ? 'Mute Audio' : 'Unmute Audio';
+//         })
+//         .catch(error => {
+//             console.error('Error accessing media devices:', error);
+//         });
+// });
 
 
 // Turn On/Off Video
-document.getElementById('toggleVideoButton').addEventListener('click', () => {
-    const videoTrack = myStream.getVideoTracks()[0];
-    if (videoTrack.enabled) {
-        videoTrack.enabled = false;
-        document.getElementById('toggleVideoButton').innerText = 'Turn On Video';
-    } else {
-        videoTrack.enabled = true;
-        document.getElementById('toggleVideoButton').innerText = 'Turn Off Video';
-    }
-});
+// document.getElementById('toggleVideoButton').addEventListener('click', () => {
+//     const videoTrack = myStream.getVideoTracks()[0];
+//     if (videoTrack.enabled) {
+//         videoTrack.enabled = false;
+//         document.getElementById('toggleVideoButton').innerText = 'Turn On Video';
+//     } else {
+//         videoTrack.enabled = true;
+//         document.getElementById('toggleVideoButton').innerText = 'Turn Off Video';
+//     }
+// });
