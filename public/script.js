@@ -1,7 +1,7 @@
 const socket = io('/');
 const myPeer = new Peer(undefined, {
     path: '/peerjs',
-    host: 'https://serene-video-call.onrender.com',
+    host: 'serene-video-call.onrender.com',
     port: location.port || (location.protocol === 'https:' ? 443 : 80),
     secure: location.protocol === 'https:'
 });
