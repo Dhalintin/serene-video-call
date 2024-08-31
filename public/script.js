@@ -1,13 +1,12 @@
 const socket = io('/');
-const videoGrid = document.getElementById('video-grid');
 const myPeer = new Peer(undefined, {
     path: '/peerjs',
-    host: '/',
+    host: 'https://serene-video-call.onrender.com',
     port: location.port || (location.protocol === 'https:' ? 443 : 80),
+    secure: location.protocol === 'https:'
 });
 
 const myVideo = document.getElementById('myVideo');
-// const userVideo = document.getElementById('userVideo');
 myVideo.muted = true;
 
 const peers = {};
@@ -62,32 +61,3 @@ function addVideoStream(video, stream) {
 
     // videoGrid.append(video);
 }
-// console.log(ROOM_ID)
-
-// Mute/Unmute Audio
-// document.getElementById('muteAudioButton').addEventListener('click', () => {
-//     navigator.mediaDevices.getUserMedia({ audio: true })
-//         .then(stream => {
-//             const audioTrack = stream.getAudioTracks()[0];
-//             audioTrack.enabled = !audioTrack.enabled;
-
-//             const muteButton = document.getElementById('muteAudioButton');
-//             muteButton.textContent = audioTrack.enabled ? 'Mute Audio' : 'Unmute Audio';
-//         })
-//         .catch(error => {
-//             console.error('Error accessing media devices:', error);
-//         });
-// });
-
-
-// Turn On/Off Video
-// document.getElementById('toggleVideoButton').addEventListener('click', () => {
-//     const videoTrack = myStream.getVideoTracks()[0];
-//     if (videoTrack.enabled) {
-//         videoTrack.enabled = false;
-//         document.getElementById('toggleVideoButton').innerText = 'Turn On Video';
-//     } else {
-//         videoTrack.enabled = true;
-//         document.getElementById('toggleVideoButton').innerText = 'Turn Off Video';
-//     }
-// });
